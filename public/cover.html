@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select the Special Date</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+            background-size: 200% 200%;
+            animation: gradient 6s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .calendar-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .calendar-container h1 {
+            font-family: 'Pacifico', cursive;
+            color: #ff69b4;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .calendar-container p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .calendar-container input[type="date"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ff69b4;
+            border-radius: 5px;
+            width: 80%;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-container input[type="date"]:focus {
+            border-color: #007BFF;
+            box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.5);
+        }
+
+        .calendar-container button {
+            padding: 10px 20px;
+            background: #ff69b4;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .calendar-container button:hover {
+            background: #007BFF;
+            box-shadow: 0px 8px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calendar-container">
+        <h1>Can You Guess the Date?</h1>
+        <p>Enter the special date below to unlock the surprise!</p>
+        <input type="date" id="special-date">
+        <button id="submit-date">Submit</button>
+        <p class="error" id="error-msg">Oops! That’s not the correct date. Try again.</p>
+    </div>
+
+    <script>
+        const correctDate = "2022-08-05"; // Correct date in YYYY-MM-DD format
+
+        document.getElementById('submit-date').addEventListener('click', () => {
+            const selectedDate = document.getElementById('special-date').value;
+
+            if (selectedDate === correctDate) {
+                window.location.href = '/main'; // Redirect to the main page
+            } else {
+                document.getElementById('error-msg').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>
